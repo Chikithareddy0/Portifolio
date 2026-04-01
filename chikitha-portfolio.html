@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chikitha Reddy Thipparthi — Creative Design Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0D0B09;--surface:#141210;--card:#1C1915;--card2:#22201C;
+  --ink:#F5F0E8;--muted:#8A7E6E;--subtle:#3A342C;
+  --a:#E8924E;--b:#6BB8A0;--c:#C26B8A;--d:#7BA8D4;--e:#C9A84C;
+  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cursor{position:fixed;width:12px;height:12px;background:var(--a);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.3s,width 0.3s,height 0.3s;mix-blend-mode:difference}
+#cursor.big{width:48px;height:48px;background:rgba(232,146,78,0.15)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(13,11,9,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04)}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--a);letter-spacing:0.02em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--a);color:var(--a);text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--a);color:#000}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.18}
+.orb1{width:600px;height:600px;background:var(--a);top:-200px;right:-150px;animation:drift1 12s ease-in-out infinite alternate}
+.orb2{width:400px;height:400px;background:var(--b);bottom:-100px;left:-100px;animation:drift2 15s ease-in-out infinite alternate}
+.orb3{width:300px;height:300px;background:var(--c);top:40%;left:40%;animation:drift3 10s ease-in-out infinite alternate}
+@keyframes drift1{0%{transform:translate(0,0)}100%{transform:translate(40px,60px)}}
+@keyframes drift2{0%{transform:translate(0,0)}100%{transform:translate(-30px,40px)}}
+@keyframes drift3{0%{transform:translate(0,0)}100%{transform:translate(30px,-40px)}}
+
+.hero-eyebrow{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--a)}
+.hero-name{font-family:var(--serif);font-size:clamp(3.5rem,9vw,7.5rem);font-weight:300;line-height:0.95;letter-spacing:-0.02em;margin-bottom:2.5rem}
+.hero-name .italic{font-style:italic;color:var(--a)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,auto);gap:0;border:1px solid var(--subtle);width:fit-content;margin-bottom:3rem}
+.hstat{padding:1.2rem 2rem;border-right:1px solid var(--subtle);position:relative}
+.hstat:last-child{border-right:none}
+.hstat-num{font-family:var(--serif);font-size:2.4rem;font-weight:300;line-height:1;display:block}
+.hstat-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block}
+.hstat:nth-child(1) .hstat-num{color:var(--a)}
+.hstat:nth-child(2) .hstat-num{color:var(--b)}
+.hstat:nth-child(3) .hstat-num{color:var(--d)}
+.hero-desc{max-width:560px;font-size:16px;line-height:1.75;color:rgba(245,240,232,0.6);margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;background:var(--a);color:#000;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#f0a060;transform:translateY(-2px)}
+.btn-secondary{padding:13px 28px;border:1px solid var(--subtle);color:var(--muted);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--ink);color:var(--ink)}
+.scroll-hint{position:absolute;bottom:2rem;right:3rem;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;writing-mode:vertical-lr}
+.scroll-hint::after{content:'';width:1px;height:40px;background:var(--subtle);display:block}
+
+/* SECTIONS */
+.section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
+.sh{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.sh-num{font-family:var(--serif);font-size:0.9rem;font-style:italic;color:var(--muted)}
+.sh-title{font-family:var(--serif);font-size:2rem;font-weight:300}
+.sh-line{flex:1;height:1px;background:var(--subtle)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem}
+.about-pull{font-family:var(--serif);font-size:1.5rem;font-weight:300;line-height:1.7;color:rgba(245,240,232,0.85)}
+.about-pull em{font-style:italic;color:var(--a)}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem}
+.atag{font-size:11px;padding:6px 14px;border:1px solid var(--subtle);color:var(--muted);transition:all 0.2s}
+.atag:hover{border-color:var(--a);color:var(--a)}
+.info-panel{display:grid;gap:1px;background:var(--subtle)}
+.ip-block{background:var(--card);padding:1.5rem}
+.ip-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem}
+.ip-val{font-size:13px;color:var(--ink);line-height:1.6}
+.ip-accent{color:var(--a);font-family:var(--serif);font-size:1.8rem;font-weight:300;display:block;margin-bottom:0.2rem}
+
+/* TOOLS */
+.tools-intro{font-size:13px;color:var(--muted);margin-bottom:2rem}
+.tool-categories{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--subtle)}
+.tool-cat{background:var(--card);padding:1.5rem}
+.tc-header{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--subtle)}
+.tc-header.design{color:var(--a)}
+.tc-header.data{color:var(--b)}
+.tc-header.platforms{color:var(--d)}
+.tool-items{display:flex;flex-wrap:wrap;gap:8px}
+.tool-item{display:flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--subtle);transition:all 0.2s;cursor:default}
+.tool-item:hover{border-color:currentColor;transform:translateY(-1px)}
+.tool-item img,.tool-item svg{width:16px;height:16px;object-fit:contain;flex-shrink:0}
+.tool-name{font-size:11px;letter-spacing:0.04em}
+.ti-design{color:var(--a)} .ti-design:hover{background:rgba(232,146,78,0.08)}
+.ti-data{color:var(--b)} .ti-data:hover{background:rgba(107,184,160,0.08)}
+.ti-platform{color:var(--d)} .ti-platform:hover{background:rgba(123,168,212,0.08)}
+.ti-crm{color:var(--c)} .ti-crm:hover{background:rgba(194,107,138,0.08)}
+.ti-ai{color:var(--e)} .ti-ai:hover{background:rgba(201,168,76,0.08)}
+
+/* PROJECTS */
+.projects{display:grid;gap:1px;background:var(--subtle)}
+.project{background:var(--card);position:relative;overflow:hidden;transition:background 0.3s}
+.project:hover{background:var(--card2)}
+.proj-accent-bar{position:absolute;left:0;top:0;bottom:0;width:3px;transition:background 0.3s}
+.p0 .proj-accent-bar{background:var(--a)}
+.p1 .proj-accent-bar{background:var(--b)}
+.p2 .proj-accent-bar{background:var(--c)}
+.p3 .proj-accent-bar{background:var(--d)}
+.proj-header{padding:2rem 2rem 2rem 2.5rem;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:start}
+.proj-num{font-family:var(--serif);font-size:3rem;font-weight:300;line-height:1;color:var(--subtle);transition:color 0.3s;flex-shrink:0}
+.project:hover .proj-num{color:var(--muted)}
+.project.open .proj-num{color:currentColor}
+.p0.open .proj-num{color:var(--a)}
+.p1.open .proj-num{color:var(--b)}
+.p2.open .proj-num{color:var(--c)}
+.p3.open .proj-num{color:var(--d)}
+.proj-tag-line{display:flex;gap:8px;align-items:center;margin-bottom:0.4rem;flex-wrap:wrap}
+.proj-badge{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;padding:3px 10px;border:1px solid}
+.p0 .proj-badge{color:var(--a);border-color:rgba(232,146,78,0.3);background:rgba(232,146,78,0.08)}
+.p1 .proj-badge{color:var(--b);border-color:rgba(107,184,160,0.3);background:rgba(107,184,160,0.08)}
+.p2 .proj-badge{color:var(--c);border-color:rgba(194,107,138,0.3);background:rgba(194,107,138,0.08)}
+.p3 .proj-badge{color:var(--d);border-color:rgba(123,168,212,0.3);background:rgba(123,168,212,0.08)}
+.proj-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.2;margin-bottom:0.3rem}
+.proj-org{font-size:11px;color:var(--muted)}
+.proj-period{font-size:10px;color:var(--muted);letter-spacing:0.08em;white-space:nowrap;text-align:right;margin-top:6px}
+.proj-chevron{width:30px;height:30px;border:1px solid var(--subtle);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);transition:all 0.3s;margin-left:auto;margin-top:6px;flex-shrink:0}
+.project.open .proj-chevron{transform:rotate(45deg);border-color:currentColor}
+.p0.open .proj-chevron{color:var(--a);background:rgba(232,146,78,0.1)}
+.p1.open .proj-chevron{color:var(--b);background:rgba(107,184,160,0.1)}
+.p2.open .proj-chevron{color:var(--c);background:rgba(194,107,138,0.1)}
+.p3.open .proj-chevron{color:var(--d);background:rgba(123,168,212,0.1)}
+.proj-body{max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1)}
+.proj-body.open{max-height:900px}
+.proj-content{padding:0 2.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;border-top:1px solid var(--subtle);padding-top:2rem;margin-left:0.5rem}
+.pc-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem}
+.pc-text{font-size:13px;color:rgba(245,240,232,0.7);line-height:1.75}
+.pc-list{list-style:none}
+.pc-list li{font-size:13px;color:rgba(245,240,232,0.7);line-height:1.7;padding-left:1.4rem;position:relative;margin-bottom:2px}
+.pc-list li::before{content:'→';position:absolute;left:0;font-size:10px;top:3px}
+.p0 .pc-list li::before{color:var(--a)}
+.p1 .pc-list li::before{color:var(--b)}
+.p2 .pc-list li::before{color:var(--c)}
+.p3 .pc-list li::before{color:var(--d)}
+.proj-tools-wrap{margin-top:1rem}
+.proj-tool-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;padding:4px 10px;border:1px solid var(--subtle);color:var(--muted);margin:3px;transition:all 0.2s}
+.proj-tool-pill:hover{border-color:var(--muted);color:var(--ink)}
+.outcomes-row{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;padding-top:1.5rem;border-top:1px solid var(--subtle);margin-top:0.5rem}
+.outcome{font-size:11px;padding:7px 14px;background:var(--card2);border-left:2px solid}
+.p0 .outcome{border-color:var(--a);color:var(--a)}
+.p1 .outcome{border-color:var(--b);color:var(--b)}
+.p2 .outcome{border-color:var(--c);color:var(--c)}
+.p3 .outcome{border-color:var(--d);color:var(--d)}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--subtle)}
+.cert-card{background:var(--card);padding:2rem;transition:background 0.2s;position:relative;overflow:hidden}
+.cert-card:hover{background:var(--card2)}
+.cert-card::after{content:attr(data-year);position:absolute;right:1rem;bottom:-0.5rem;font-family:var(--serif);font-size:5rem;font-weight:300;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none}
+.cert-icon{width:32px;height:32px;border-radius:4px;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;font-size:14px}
+.cert-name{font-size:13px;color:var(--ink);line-height:1.4;margin-bottom:0.5rem;font-weight:400}
+.cert-org{font-size:11px;color:var(--muted);letter-spacing:0.06em}
+.cert-year-badge{font-family:var(--serif);font-size:0.85rem;color:var(--muted);margin-top:0.75rem;display:block}
+
+/* FOOTER */
+footer{border-top:1px solid var(--subtle);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;max-width:1200px;margin:0 auto}
+.footer-name{font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--muted)}
+.footer-contact{display:flex;gap:2rem;flex-wrap:wrap}
+.fc{font-size:11px;color:var(--muted);letter-spacing:0.06em;text-decoration:none;transition:color 0.2s}
+.fc:hover{color:var(--a)}
+.footer-copy{font-size:10px;color:var(--subtle);letter-spacing:0.1em;text-transform:uppercase;width:100%;text-align:center;padding-top:2rem;border-top:1px solid var(--subtle)}
+
+/* DIVIDER */
+.full-divider{height:1px;background:var(--subtle);margin:0 3rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero,.section{padding-left:1.5rem;padding-right:1.5rem}
+  .hero-name{font-size:3.5rem}
+  .hero-stats{grid-template-columns:repeat(3,1fr);width:100%}
+  .hstat{padding:1rem}
+  .about-grid,.tool-categories,.proj-content,.certs-grid{grid-template-columns:1fr}
+  .proj-header{grid-template-columns:auto 1fr auto}
+  footer{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Chikitha R. T.</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#tools">Tools</a>
+    <a href="#work">Work</a>
+    <a href="#certs">Certifications</a>
+  </div>
+  <a href="mailto:chikithareddy00@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <p class="hero-eyebrow">Creative Design Portfolio · Dublin, Ireland</p>
+  <h1 class="hero-name">
+    Chikitha Reddy<br>
+    <span class="italic">Thipparthi</span>
+  </h1>
+  <div class="hero-stats">
+    <div class="hstat">
+      <span class="hstat-num">4+</span>
+      <span class="hstat-label">Years Experience</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-num">4</span>
+      <span class="hstat-label">Industry Sectors</span>
+    </div>
+    <div class="hstat">
+      <span class="hstat-num">24+</span>
+      <span class="hstat-label">Tools Mastered</span>
+    </div>
+  </div>
+  <p class="hero-desc">Visual Arts graduate and creative design professional focused on visual storytelling, campaign design, presentations, infographics, data visualisation, and brand-aligned creative execution.</p>
+  <div class="hero-actions">
+    <a href="mailto:chikithareddy00@gmail.com" class="btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      Hire Me
+    </a>
+    <a href="#work" class="btn-secondary">View Work</a>
+  </div>
+  <span class="scroll-hint">Scroll</span>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="sh">
+    <span class="sh-num">01</span>
+    <span class="sh-title">About</span>
+    <div class="sh-line"></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="about-pull">I translate <em>complexity into clarity</em> through strong layout, hierarchy, and visual narrative — spanning client-facing campaigns, exhibition spaces, pitch decks, and <em>data-led storytelling</em>.</p>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:1.5rem">I bring a blend of creative design execution, campaign thinking, presentation storytelling, CRM-aware marketing support, and data visualisation. My work spans client-facing marketing materials, event collateral, exhibition visuals, social media assets, pitch decks, dashboards, WordPress content support, and performance-led communication design.</p>
+      <div class="about-tags">
+        <span class="atag">Infographics & Data Visuals</span>
+        <span class="atag">Executive Presentations</span>
+        <span class="atag">CRM-led Visual Content</span>
+        <span class="atag">WordPress & Landing Assets</span>
+        <span class="atag">Digital & Print Collateral</span>
+        <span class="atag">AI-assisted Design</span>
+        <span class="atag">Exhibition Design</span>
+        <span class="atag">Brand Systems</span>
+      </div>
+    </div>
+    <div class="info-panel">
+      <div class="ip-block">
+        <p class="ip-label">Education</p>
+        <p class="ip-val">BA Visual Arts<br><span style="color:var(--muted);font-size:12px">Creative Mentors Animation and Gaming College</span></p>
+      </div>
+      <div class="ip-block">
+        <p class="ip-label">Postgraduate</p>
+        <p class="ip-val">MSc Management in Business<br><span style="color:var(--muted);font-size:12px">Dublin City University</span></p>
+      </div>
+      <div class="ip-block">
+        <p class="ip-label">Location</p>
+        <p class="ip-val">Dublin, Ireland</p>
+      </div>
+      <div class="ip-block">
+        <p class="ip-label">Contact</p>
+        <p class="ip-val"><a href="mailto:chikithareddy00@gmail.com" style="color:var(--a);text-decoration:none;font-size:13px">chikithareddy00@gmail.com</a><br><span style="font-size:12px;color:var(--muted)">+353 089 969 6268</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- TOOLS -->
+<section class="section" id="tools">
+  <div class="sh">
+    <span class="sh-num">02</span>
+    <span class="sh-title">Skills & Tools</span>
+    <div class="sh-line"></div>
+  </div>
+  <p class="tools-intro">Hover over any tool to highlight it. Categorised by discipline.</p>
+  <div class="tool-categories">
+    <div class="tool-cat">
+      <p class="tc-header design">Design & Creative</p>
+      <div class="tool-items">
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#001E36"/><path d="M14.5 8.5c0-1.1-.9-2-2-2H7v11h1.5v-4.5H12c1.65 0 2.5-.9 2.5-2.25V8.5zM12 11.5H8.5V8h3.5c.55 0 1 .45 1 1v1.5c0 .55-.45 1-1 1z" fill="#31A8FF"/><path d="M17 8h-1.5v8H17c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm.5 6c0 .28-.22.5-.5.5h-.5V9.5H17c.28 0 .5.22.5.5v4z" fill="#31A8FF"/></svg>
+          <span class="tool-name">Photoshop</span>
+        </div>
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#300B00"/><path d="M10.5 15.5L9 19H7l5-14h2l5 14h-2l-1.5-3.5h-5zm4.5-1.5l-2-5.5-2 5.5h4z" fill="#FF9A00"/></svg>
+          <span class="tool-name">Illustrator</span>
+        </div>
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#49021F"/><path d="M7 5h10v14H7V5zm1.5 1.5v11h7v-11h-7zM9.5 9h5v1.5h-5V9zm0 3h5v1.5h-5V12zm0 3h3v1.5h-3V15z" fill="#FF3366"/></svg>
+          <span class="tool-name">InDesign</span>
+        </div>
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1E1E1E"/><circle cx="8.5" cy="12" r="3.5" fill="#A259FF"/><circle cx="15.5" cy="12" r="3.5" fill="#F24E1E"/><circle cx="12" cy="7" r="3.5" fill="#FF7262"/><circle cx="12" cy="17" r="3.5" fill="#0ACF83"/></svg>
+          <span class="tool-name">Figma</span>
+        </div>
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#00C4CC"/><path d="M12 5L5 8.5V15.5L12 19L19 15.5V8.5L12 5Z" fill="white" opacity="0.9"/><path d="M12 5L12 19" stroke="#7D2AE8" stroke-width="1.5"/><path d="M5 8.5L19 15.5" stroke="#7D2AE8" stroke-width="1.5" opacity="0.7"/><path d="M19 8.5L5 15.5" stroke="#7D2AE8" stroke-width="1.5" opacity="0.7"/></svg>
+          <span class="tool-name">Canva</span>
+        </div>
+        <div class="tool-item ti-design">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#D93025"/><path d="M6 8h8v1.5H6V8zm0 3h8v1.5H6V11zm0 3h5v1.5H6V14z" fill="white"/><path d="M16 5l3 3-7 7-3.5.5.5-3.5L16 5z" fill="white" opacity="0.9"/></svg>
+          <span class="tool-name">Adobe Firefly</span>
+        </div>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <p class="tc-header data">Data & Presentations</p>
+      <div class="tool-items">
+        <div class="tool-item ti-data">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#D83B01"/><path d="M5 7h14v10H5V7zm1.5 1.5v7h11v-7h-11zm2 1h3v1.5h-3V9.5zm4.5 0h2v1.5h-2V9.5zm-4.5 3h3v1.5h-3V12.5zm4.5 0h2v1.5h-2V12.5z" fill="white" opacity="0.9"/></svg>
+          <span class="tool-name">PowerPoint</span>
+        </div>
+        <div class="tool-item ti-data">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#217346"/><path d="M5 5h14v14H5V5zm7 7L8 7H6v10h2V9.5L12 14l4-4.5V17h2V7h-2L12 12z" fill="white" opacity="0.9"/></svg>
+          <span class="tool-name">Word</span>
+        </div>
+        <div class="tool-item ti-data">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1F6FEB"/><path d="M6 7h12v2H6V7zm0 4h8v2H6v-2zm0 4h10v2H6v-2z" fill="white" opacity="0.9"/><circle cx="17" cy="15" r="3" fill="#58A6FF"/><path d="M17 13.5v2h1.5" stroke="white" stroke-width="1" fill="none" stroke-linecap="round"/></svg>
+          <span class="tool-name">Tableau</span>
+        </div>
+        <div class="tool-item ti-data">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#404040"/><rect x="6" y="6" width="3" height="12" fill="#AAAAAA" rx="1"/><rect x="10.5" y="9" width="3" height="9" fill="#888888" rx="1"/><rect x="15" y="12" width="3" height="6" fill="#666666" rx="1"/></svg>
+          <span class="tool-name">Notion</span>
+        </div>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <p class="tc-header platforms">CRM & Platforms</p>
+      <div class="tool-items">
+        <div class="tool-item ti-crm">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FF7A59"/><path d="M17 8.5C17 6.57 15.43 5 13.5 5c-1.28 0-2.4.68-3 1.68C10.1 5.68 9.08 5 7.9 5 6.3 5 5 6.3 5 7.9c0 .8.33 1.53.86 2.06L12 16l6.14-6.04C18.67 9.43 19 8.7 19 7.9c0-.55-.15-1.07-.41-1.51" fill="white" opacity="0.9"/></svg>
+          <span class="tool-name">HubSpot</span>
+        </div>
+        <div class="tool-item ti-crm">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#00A1E0"/><path d="M12 4C9.24 4 7 6.24 7 9c0 2 1.16 3.73 2.84 4.58L9 19h6l-.84-5.42C15.84 12.73 17 11 17 9c0-2.76-2.24-5-5-5z" fill="white" opacity="0.9"/></svg>
+          <span class="tool-name">Salesforce</span>
+        </div>
+        <div class="tool-item ti-platform">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#21759B"/><path d="M4 5h16v14H4V5zm3 3v8h10V8H7zm1.5 1.5h7v5h-7v-5z" fill="white" opacity="0.8"/><circle cx="12" cy="11" r="1.5" fill="#21759B"/></svg>
+          <span class="tool-name">WordPress</span>
+        </div>
+        <div class="tool-item ti-ai">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1A1A2E"/><circle cx="12" cy="12" r="5" fill="none" stroke="#E8924E" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="#E8924E"/><line x1="12" y1="4" x2="12" y2="7" stroke="#E8924E" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="20" stroke="#E8924E" stroke-width="1.5" stroke-linecap="round"/><line x1="4" y1="12" x2="7" y2="12" stroke="#E8924E" stroke-width="1.5" stroke-linecap="round"/><line x1="17" y1="12" x2="20" y2="12" stroke="#E8924E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="tool-name">AI Design Tools</span>
+        </div>
+        <div class="tool-item ti-platform">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#161B22"/><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.69c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.909-1.29 2.747-1.02 2.747-1.02.546 1.372.202 2.386.1 2.638.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.165 22 16.418 22 12c0-5.52-4.48-10-10-10z" fill="#E8924E" opacity="0.9"/></svg>
+          <span class="tool-name">HTML/CSS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="sh">
+    <span class="sh-num">03</span>
+    <span class="sh-title">Selected Work</span>
+    <div class="sh-line"></div>
+  </div>
+  <div class="projects">
+
+    <!-- Project 1 -->
+    <div class="project p0" onclick="toggleProject(this)">
+      <div class="proj-accent-bar"></div>
+      <div class="proj-header">
+        <span class="proj-num">01</span>
+        <div>
+          <div class="proj-tag-line">
+            <span class="proj-badge">B2B</span>
+            <span class="proj-badge">CRM</span>
+            <span class="proj-badge">Data Visualisation</span>
+          </div>
+          <h2 class="proj-title">Client Campaign Design System & Data Storytelling</h2>
+          <p class="proj-org">Creative Design & Marketing Executive · Claro Software Solutions</p>
+        </div>
+        <div>
+          <p class="proj-period">Apr 2022 – Jul 2024</p>
+          <div class="proj-chevron">+</div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-content">
+          <div>
+            <p class="pc-label">Challenge</p>
+            <p class="pc-text">Clients needed visually strong, easy-to-understand assets that translated complex ideas, CRM insights, and performance data into compelling stories for pitches, campaigns, and stakeholder decisions.</p>
+            <p class="pc-label" style="margin-top:1.2rem">Contribution</p>
+            <ul class="pc-list">
+              <li>Campaign creatives for social, email, web, and landing pages</li>
+              <li>Pitch decks, PowerPoint presentations, and proposal layouts</li>
+              <li>CRM & performance data into infographics and dashboards</li>
+              <li>WordPress content updates to support campaign launches</li>
+              <li>Tableau-style visual storytelling for trends and conversion data</li>
+              <li>Consistent brand asset and design system management</li>
+            </ul>
+          </div>
+          <div>
+            <p class="pc-label">Tools Used</p>
+            <div class="proj-tools-wrap">
+              <span class="proj-tool-pill">Photoshop</span><span class="proj-tool-pill">Illustrator</span><span class="proj-tool-pill">InDesign</span><span class="proj-tool-pill">Figma</span><span class="proj-tool-pill">PowerPoint</span><span class="proj-tool-pill">Canva</span><span class="proj-tool-pill">WordPress</span><span class="proj-tool-pill">HubSpot</span><span class="proj-tool-pill">Salesforce</span><span class="proj-tool-pill">Tableau</span><span class="proj-tool-pill">HTML/CSS</span><span class="proj-tool-pill">Notion</span>
+            </div>
+          </div>
+          <div class="outcomes-row">
+            <span class="outcome">Improved client communication clarity</span>
+            <span class="outcome">Stronger pitch storytelling</span>
+            <span class="outcome">Fast-paced multi-asset delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project p1" onclick="toggleProject(this)">
+      <div class="proj-accent-bar"></div>
+      <div class="proj-header">
+        <span class="proj-num">02</span>
+        <div>
+          <div class="proj-tag-line">
+            <span class="proj-badge">FMCG</span>
+            <span class="proj-badge">Events</span>
+            <span class="proj-badge">Brand Design</span>
+          </div>
+          <h2 class="proj-title">Campaign Visuals, Events & FMCG Brand Execution</h2>
+          <p class="proj-org">Marketing & Design Executive · Ardra / KS</p>
+        </div>
+        <div>
+          <p class="proj-period">Oct 2020 – Mar 2022</p>
+          <div class="proj-chevron">+</div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-content">
+          <div>
+            <p class="pc-label">Challenge</p>
+            <p class="pc-text">Campaigns required visually strong, fast-turnaround design working consistently across activations, events, merchandising, digital content, and stakeholder-facing materials.</p>
+            <p class="pc-label" style="margin-top:1.2rem">Contribution</p>
+            <ul class="pc-list">
+              <li>Product marketing visuals for digital and retail formats</li>
+              <li>Event collateral, promotional layouts, and branded assets</li>
+              <li>Campaign branding and visual communication consistency</li>
+              <li>High-volume deliverables at speed without compromising quality</li>
+            </ul>
+          </div>
+          <div>
+            <p class="pc-label">Tools Used</p>
+            <div class="proj-tools-wrap">
+              <span class="proj-tool-pill">Photoshop</span><span class="proj-tool-pill">Illustrator</span><span class="proj-tool-pill">Canva</span><span class="proj-tool-pill">PowerPoint</span><span class="proj-tool-pill">Word</span><span class="proj-tool-pill">Notion</span>
+            </div>
+          </div>
+          <div class="outcomes-row">
+            <span class="outcome">Visual consistency across touchpoints</span>
+            <span class="outcome">Campaign launch readiness</span>
+            <span class="outcome">Stronger customer-facing assets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project p2" onclick="toggleProject(this)">
+      <div class="proj-accent-bar"></div>
+      <div class="proj-header">
+        <span class="proj-num">03</span>
+        <div>
+          <div class="proj-tag-line">
+            <span class="proj-badge">Non-profit</span>
+            <span class="proj-badge">Presentations</span>
+            <span class="proj-badge">Storytelling</span>
+          </div>
+          <h2 class="proj-title">Programme Communications & Event Design</h2>
+          <p class="proj-org">Creative Communications Executive · Daughters of Charity Child and Family Services</p>
+        </div>
+        <div>
+          <p class="proj-period">Jan 2025 – Jul 2025</p>
+          <div class="proj-chevron">+</div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-content">
+          <div>
+            <p class="pc-label">Challenge</p>
+            <p class="pc-text">The organisation needed clear, accessible, engaging visual communication across campaigns, events, and participant-facing materials while maintaining consistency and strong visual hierarchy.</p>
+            <p class="pc-label" style="margin-top:1.2rem">Contribution</p>
+            <ul class="pc-list">
+              <li>Posters, slides, campaign assets, and communication materials</li>
+              <li>Visual storytelling to improve programme visibility</li>
+              <li>Event collateral and participant-facing materials</li>
+              <li>Data and feedback shaped into clearer visual messaging</li>
+              <li>Brand consistency across digital and print outputs</li>
+            </ul>
+          </div>
+          <div>
+            <p class="pc-label">Tools Used</p>
+            <div class="proj-tools-wrap">
+              <span class="proj-tool-pill">Canva</span><span class="proj-tool-pill">PowerPoint</span><span class="proj-tool-pill">Word</span><span class="proj-tool-pill">Photoshop</span><span class="proj-tool-pill">Notion</span><span class="proj-tool-pill">CRM tools</span>
+            </div>
+          </div>
+          <div class="outcomes-row">
+            <span class="outcome">Higher quality campaign materials</span>
+            <span class="outcome">Stronger stakeholder communication</span>
+            <span class="outcome">More accessible content</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project p3" onclick="toggleProject(this)">
+      <div class="proj-accent-bar"></div>
+      <div class="proj-header">
+        <span class="proj-num">04</span>
+        <div>
+          <div class="proj-tag-line">
+            <span class="proj-badge">Exhibitions</span>
+            <span class="proj-badge">Visual Storytelling</span>
+          </div>
+          <h2 class="proj-title">Exhibition Identity & Visitor Experience</h2>
+          <p class="proj-org">Gallery Manager · Aalankritha Art Gallery</p>
+        </div>
+        <div>
+          <p class="proj-period">Oct 2018 – Mar 2020</p>
+          <div class="proj-chevron">+</div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-content">
+          <div>
+            <p class="pc-label">Challenge</p>
+            <p class="pc-text">Exhibitions needed a cohesive visual identity and strong in-space storytelling to attract visitors and improve the overall customer experience.</p>
+            <p class="pc-label" style="margin-top:1.2rem">Contribution</p>
+            <ul class="pc-list">
+              <li>Exhibition layouts and customer-facing visual experiences</li>
+              <li>Promotional materials for events and exhibitions</li>
+              <li>Visual merchandising and presentation standards</li>
+            </ul>
+          </div>
+          <div>
+            <p class="pc-label">Tools Used</p>
+            <div class="proj-tools-wrap">
+              <span class="proj-tool-pill">Visual Merchandising</span><span class="proj-tool-pill">Photoshop</span><span class="proj-tool-pill">Canva</span>
+            </div>
+          </div>
+          <div class="outcomes-row">
+            <span class="outcome">Enhanced exhibition visual experience</span>
+            <span class="outcome">Higher visitor engagement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certs">
+  <div class="sh">
+    <span class="sh-num">04</span>
+    <span class="sh-title">Certifications</span>
+    <div class="sh-line"></div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card" data-year="2025">
+      <div class="cert-icon" style="background:rgba(123,168,212,0.15)">🎓</div>
+      <p class="cert-name">Business Ethics: An Introduction to Ethics for Business Leaders</p>
+      <p class="cert-org">Dublin City University</p>
+      <span class="cert-year-badge">2025</span>
+    </div>
+    <div class="cert-card" data-year="2024">
+      <div class="cert-icon" style="background:rgba(201,168,76,0.15)">✦</div>
+      <p class="cert-name">Inside LVMH Certificate</p>
+      <p class="cert-org">LVMH</p>
+      <span class="cert-year-badge">2024</span>
+    </div>
+    <div class="cert-card" data-year="2024">
+      <div class="cert-icon" style="background:rgba(107,184,160,0.15)">◈</div>
+      <p class="cert-name">Fundamentals of Digital Marketing</p>
+      <p class="cert-org">Google</p>
+      <span class="cert-year-badge">2024</span>
+    </div>
+    <div class="cert-card" data-year="2026">
+      <div class="cert-icon" style="background:rgba(232,146,78,0.15)">⟳</div>
+      <p class="cert-name">Fundamentals of Change Management</p>
+      <p class="cert-org">Knowledgetrain</p>
+      <span class="cert-year-badge">2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<footer>
+  <span class="footer-name">Chikitha Reddy Thipparthi</span>
+  <div class="footer-contact">
+    <a href="mailto:chikithareddy00@gmail.com" class="fc">chikithareddy00@gmail.com</a>
+    <span class="fc">+353 089 969 6268</span>
+    <span class="fc">Dublin, Ireland</span>
+  </div>
+  <p class="footer-copy">© 2025 Chikitha Reddy Thipparthi · Creative Design Portfolio</p>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.project,.tool-item,.cert-card,.hero-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// Project accordion
+function toggleProject(el) {
+  const body = el.querySelector('.proj-body');
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.project.open').forEach(p => {
+    p.classList.remove('open');
+    p.querySelector('.proj-body').classList.remove('open');
+  });
+  if (!isOpen) { el.classList.add('open'); body.classList.add('open'); }
+}
+
+// Stagger fade-in on load
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.hstat,.about-pull,.ip-block,.tool-cat,.project,.cert-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transition = 'opacity 0.6s ease ' + (i * 0.08) + 's, transform 0.6s ease ' + (i * 0.08) + 's';
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  items.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    obs.observe(el);
+  });
+});
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--a)' : '';
+  });
+});
+</script>
+</body>
+</html>
